@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\InventoryController;
-use App\Http\Controllers\RentalController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -46,6 +45,4 @@ Route::middleware('auth')->group(function () {
     Route::get('/inventory/{id}/edit', [InventoryController::class, 'edit'])->name('inventory.edit');
     Route::match(['put','patch'],'/inventory/{id}', [InventoryController::class, 'update'])->name('inventory.update');
 
-    // Routes pour la gestion des locations
-    Route::get('/rentals', [RentalController::class, 'index'])->name('rentals.index');
 });

@@ -46,11 +46,6 @@
                                     Gestion du stock de DVD
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link {{ request()->routeIs('rentals.*') ? 'active' : '' }}" href="{{ route('rentals.index') }}">
-                                    Gestion des Locations
-                                </a>
-                            </li>
                         @endauth
                     </ul>
 

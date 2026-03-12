@@ -281,6 +281,14 @@ class ToadInventoryService
                 ->timeout(10)
                 ->delete($url);
 
+            // Log temporaire pour debug
+            Log::info("DELETE Inventory Response", [
+                'id' => $id,
+                'status' => $response->status(),
+                'body' => $response->body(),
+                'token_present' => !empty($token)
+            ]);
+
             if ($response->successful()) {
                 return [
                     'success' => true,

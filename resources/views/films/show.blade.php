@@ -59,7 +59,7 @@
                         <a href="{{ route('films.edit', $film['filmId'] ?? $film['id']) }}" class="btn btn-warning">
                             <i class="bi bi-pencil"></i> Modifier
                         </a>
-                        <form action="{{ route('films.destroy', $film['filmId'] ?? $film['id']) }}" method="POST" class="d-inline">
+                        <form action="{{ route('films.destroy', $film['filmId'] ?? $film['id']) }}" method="POST"style="display: contents;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce film ?')">

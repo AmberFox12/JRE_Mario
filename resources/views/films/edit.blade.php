@@ -69,16 +69,6 @@
                                 <input id="rentalDuration" name="rentalDuration" value="{{ old('rentalDuration', $film['rentalDuration'] ?? 6) }}" class="form-control" type="number">
                                 @error('rentalDuration') <div class="text-danger">{{ $message }}</div> @enderror
                             </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="rentalRate" class="form-label">Rental Rate</label>
-                                <input id="rentalRate" name="rentalRate" value="{{ old('rentalRate', $film['rentalRate'] ?? '0.99') }}" class="form-control" type="text">
-                                @error('rentalRate') <div class="text-danger">{{ $message }}</div> @enderror
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="replacementCost" class="form-label">Replacement Cost</label>
-                                <input id="replacementCost" name="replacementCost" value="{{ old('replacementCost', $film['replacementCost'] ?? '20.99') }}" class="form-control" type="text">
-                                @error('replacementCost') <div class="text-danger">{{ $message }}</div> @enderror
-                            </div>
                         </div>
 
                         <div class="mb-3">

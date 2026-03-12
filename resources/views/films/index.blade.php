@@ -55,20 +55,20 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <div class="btn-group" role="group">
+                                                <div class="d-flex gap-2" role="group">
                                                     <a href="{{ route('films.show', $film['filmId'] ?? $film['id']) }}" 
                                                        class="btn btn-sm btn-info" title="Voir">
-                                                        <i class="bi bi-eye"></i>
+                                                        <i class="bi bi-eye"></i>Détails
                                                     </a>
                                                     <a href="{{ route('films.edit', $film['filmId'] ?? $film['id']) }}" class="btn btn-sm btn-warning" title="Modifier">
-                                                        <i class="bi bi-pencil"></i>
+                                                        <i class="bi bi-pencil"></i>Modifier
                                                     </a>
-                                                    <form action="{{ route('films.destroy', $film['filmId'] ?? $film['id']) }}" method="POST" class="d-inline">
+                                                    <form action="{{ route('films.destroy', $film['filmId'] ?? $film['id']) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-sm btn-danger" title="Supprimer"
                                                                 onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce film ?')">
-                                                            <i class="bi bi-trash"></i>
+                                                            <i class="bi bi-trash"></i>Supprimer
                                                         </button>
                                                     </form>
                                                 </div>
