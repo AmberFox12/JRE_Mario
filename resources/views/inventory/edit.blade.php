@@ -27,6 +27,7 @@
                     <form method="POST" action="{{ route('inventory.update', $inventory['inventoryId'] ?? $inventory['id']) }}">
                         @csrf
                         @method('PUT')
+                        <input type="hidden" name="filmId" value="{{ $inventory['filmId'] ?? ($inventory['film']['filmId'] ?? '') }}">
 
                         <div class="mb-3">
                             <label class="form-label">Film</label>

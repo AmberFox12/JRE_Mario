@@ -201,10 +201,11 @@ class InventoryController extends Controller
 
         $data = $request->validate([
             'storeId' => 'required|integer',
+            'filmId'  => 'required|integer',
         ]);
 
-        // L'API gère maintenant la récupération du filmId, on envoie seulement le storeId
         $payload = [
+            'filmId'  => (int) $data['filmId'],
             'storeId' => (int) $data['storeId'],
         ];
 

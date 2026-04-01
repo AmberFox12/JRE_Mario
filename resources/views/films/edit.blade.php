@@ -64,12 +64,19 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label for="rentalDuration" class="form-label">Rental Duration</label>
                                 <input id="rentalDuration" name="rentalDuration" value="{{ old('rentalDuration', $film['rentalDuration'] ?? 6) }}" class="form-control" type="number">
                                 @error('rentalDuration') <div class="text-danger">{{ $message }}</div> @enderror
                             </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="replacementCost" class="form-label">Replacement Cost (€)</label>
+                                <input id="replacementCost" name="replacementCost" value="{{ old('replacementCost', $film['replacementCost']) }}" class="form-control" type="number" step="0.01">
+                                @error('replacementCost') <div class="text-danger">{{ $message }}</div> @enderror
+                            </div>
                         </div>
+
+                        <input type="hidden" name="rentalRate" value="{{ $film['rentalRate'] }}">
 
                         <div class="mb-3">
                             <label for="specialFeatures" class="form-label">Special Features (comma separated)</label>

@@ -62,6 +62,11 @@ class LoginController extends Controller
         return $this->sendLoginResponse($request);
     }
 
+    protected function loggedOut(Request $request)
+    {
+        return redirect()->route('login');
+    }
+
     protected function validateLogin(Request $request)
     {
         $request->validate([

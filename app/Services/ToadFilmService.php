@@ -18,7 +18,7 @@ class ToadFilmService
     }
 
     /**
-     * Récupère le token JWT pour l'authentification
+     * Récupère le token admin pour l'authentification API
      */
     private function getUserToken(): ?string
     {
@@ -106,6 +106,9 @@ class ToadFilmService
     public function createFilm(array $payload): ?array
     {
         $url = $this->baseUrl . '/films';
+
+        // Supprimer les valeurs null — l'API rejette les nulls avec 403
+        $payload = array_filter($payload, fn($v) => $v !== null);
 
         try {
             // Préparation des headers
@@ -252,12 +255,15 @@ class ToadFilmService
 
         $url = $this->baseUrl . '/films/' . $id;
 
+        // Supprimer les valeurs null — l'API rejette les nulls avec 403
+        $payload = array_filter($payload, fn($v) => $v !== null);
+
         try {
             // Préparation de la requête avec le bon token
             $request = Http::acceptJson()->timeout(10);
-            
-            if ($this->token) {
-                $request = $request->withToken($this->token);
+            $token = $this->getUserToken();
+            if ($token) {
+                $request = $request->withToken($token);
             }
 
             Log::info('Appel API Update Film', [

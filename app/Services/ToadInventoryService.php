@@ -22,8 +22,8 @@ class ToadInventoryService
      */
     private function getUserToken(): ?string
     {
-        $user = Session::get('user');
-        return $user['token'] ?? $this->token;
+        $toadUser = Session::get('toad_user');
+        return $toadUser['token'] ?? $this->token;
     }
 
     /**
@@ -42,7 +42,7 @@ class ToadInventoryService
 
         try {
             $response = Http::withHeaders($headers)
-                ->timeout(10)
+                ->timeout(60)
                 ->get($url);
 
             if ($response->successful()) {
