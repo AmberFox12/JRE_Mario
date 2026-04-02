@@ -82,9 +82,10 @@
                         <div class="mt-3">
                             <p class="text-muted">
                                 <i class="bi bi-info-circle"></i> 
-                                Total : <strong>{{ count($films) }}</strong> film(s)
+                                Total : <strong>{{ $films->total() }}</strong> film(s)
                             </p>
                         </div>
+                        {{ $films->links() }}
                     @endif
                 </div>
             </div>

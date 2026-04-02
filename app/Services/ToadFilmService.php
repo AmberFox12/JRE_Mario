@@ -25,7 +25,7 @@ class ToadFilmService
         return $this->token;
     }
 
-    public function getAllFilms(): ?array
+    public function getAllFilms(int $limit = 20, int $offset = 0): ?array
     {
         $url = $this->baseUrl . '/films';
 
@@ -42,7 +42,10 @@ class ToadFilmService
                 'has_token' => !empty($this->token)
             ]);
 
-            $response = $request->get($url);
+            $response = $request->get($url,[
+                'limit' => $limit,
+                'offset' => $offset
+            ]);
 
             Log::info('Réponse API Films', [
                 'status' => $response->status(),
@@ -67,6 +70,26 @@ class ToadFilmService
             return null;
         }
     }
+
+    public function getCountFilms(): int
+    {
+        $url = $this->baseUrl . '/films/count';
+        try {
+            $request = Http::acceptJson()->timeout(10);
+            if ($this->token) {
+                $request = $request->withToken($this->token);
+            }
+            $response = $request->get($url);
+            if ($response->successful()) {
+                return (int) $response->body(); // l'API retourne juste un nombre
+            }
+            return 0;
+        } catch (\Throwable $e) {
+            Log::error('Erreur count Films', ['msg' => $e->getMessage()]);
+            return 0;
+        }
+    }
+
 
     public function getFilmById($id): ?array
     {
